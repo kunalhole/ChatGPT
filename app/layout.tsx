@@ -5,6 +5,7 @@ import { authOptions } from "../pages/api/auth/[...nextauth]"
 
 import Login from "../components/Login"
 import Providers from "../components/Providers"
+import ClientProvider from "../components/ClientProvider"
 export default async function RootLayout({
   children,
 }: {
@@ -27,6 +28,11 @@ export default async function RootLayout({
               </div>
 
               {/* ClientProvider-Notification by using React Toaster    */}
+
+            <ClientProvider/>
+               
+
+
               <div className="bg-[#343541] flex-1">{children}</div>
             </div>
           )}
