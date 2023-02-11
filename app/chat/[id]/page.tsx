@@ -2,7 +2,9 @@ import Chat from "../../../components/Chat"
 import ChatInput from "../../../components/ChatInput"
 
 type Props = {
-  id: string
+  params: {
+    id: string
+  }
 }
 function ChatPage({ params: { id } }: Props) {
   return (

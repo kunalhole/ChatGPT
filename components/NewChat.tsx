@@ -5,15 +5,13 @@ import { useSession } from "next-auth/react"
 import { useRouter } from "next/navigation"
 import { db } from "../firebase"
 
-
-
 const NewChat = () => {
   const router = useRouter()
   const { data: session } = useSession()
 
   const createNewChat = async () => {
     const doc = await addDoc(
-      collection(db, "users", session?.user?.email, "chats"),
+      collection(db, "users", session?.user?.email!, "chats"),
       {
         userId: session?.user?.email!,
         createdAt: serverTimestamp(),

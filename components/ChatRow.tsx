@@ -20,8 +20,9 @@ const ChatRow = ({ id }: Props) => {
   const [active, setActive] = useState(false)
 
   const [messages] = useCollection(
-    collection(db, "users", session?.user?.email!, "chats", id, "meassages")
+    collection(db, "users", session?.user?.email!, "chats", id, "messages")
   )
+
   useEffect(() => {
     if (!pathName) return
 
@@ -32,6 +33,7 @@ const ChatRow = ({ id }: Props) => {
     await deleteDoc(doc(db, "users", session?.user?.email!, "chats", id))
     router.replace("/")
   }
+  console.log(messages)
   return (
     <Link
       href={`/chat/${id}`}

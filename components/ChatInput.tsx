@@ -5,9 +5,11 @@ import { useSession } from "next-auth/react"
 import { FormEvent, useState } from "react"
 import { db } from "../firebase"
 import { toast } from "react-hot-toast"
+import ModelSelection from "./ModelSelection"
+import useSWR from "swr"
 
 type Props = {
-  id: string
+  chatId: string
 }
 
 const ChatInput = ({ chatId }: Props) => {
@@ -16,7 +18,9 @@ const ChatInput = ({ chatId }: Props) => {
 
   // Use SWR to get Model
 
-  const model = "text-davinci-003"
+  const { data: model } = useSWR("model", {
+    fallbackData: "text-davinci-003",
+  })
 
   const sendMessage = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -64,7 +68,7 @@ const ChatInput = ({ chatId }: Props) => {
     }).then(() => {
       // Toast Notification to say Succesful
 
-      toast.success("ChatGPT has responded", {
+      toast.success("ChatGPT has responded!", {
         id: notification,
       })
     })
@@ -89,7 +93,9 @@ const ChatInput = ({ chatId }: Props) => {
           <PaperAirplaneIcon className="h-4 w-4 -rotate-45" />
         </button>
       </form>
-      <div>{/* modalselection */}</div>
+      <div className="md:hidden">
+        <ModelSelection />
+      </div>
     </div>
   )
 }
