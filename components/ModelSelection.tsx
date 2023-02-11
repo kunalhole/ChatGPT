@@ -19,10 +19,7 @@ const ModelSelection = () => {
         isLoading={isLoading}
         isSearchable
         menuPosition="fixed"
-        classNames={{
-          control: (state) => "bg-[#434654] border-[#434654] text-white",
-        }}
-        onChange={(e) => setModel(e.value)}
+        // onChange={(e) => setModel(e.value): Props}
       />
     </div>
   )

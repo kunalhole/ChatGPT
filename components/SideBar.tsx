@@ -43,7 +43,7 @@ const SideBar = () => {
       </div>
       {session && (
         <img
-          src={session.user?.image}
+          src={session?.user?.image!}
           onClick={() => signOut()}
           alt="userImage"
           title="LogOut"
